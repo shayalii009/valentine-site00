@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You 💗</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", Arial, sans-serif;
+      background: #ffeaf3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 40px 20px;
+      max-width: 900px;
+    }
+
+    h1 {
+      color: #ff5c8d;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    p.sub {
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    /* photos */
+    .photos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .photos img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      transform: rotate(-3deg);
+      transition: transform 0.3s;
+    }
+
+    .photos img:nth-child(even) {
+      transform: rotate(4deg);
+    }
+
+    .photos img:hover {
+      transform: scale(1.05);
+    }
+
+    /* buttons */
+    button {
+      background: #ff5c8d;
+      border: none;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      transform: translateY(-3px) rotate(-1deg);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.25);
+    }
+
+    /* popup card */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .card {
+      background: #fff;
+      max-width: 500px;
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      animation: pop 0.5s ease;
+      position: relative;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.7) rotate(-5deg); opacity: 0; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .card p {
+      color: #444;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .close {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    /* floating hearts */
+    .heart {
+      position: fixed;
+      font-size: 20px;
+      animation: float 4s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>for you 💗</h1>
+    <p class="sub">soft. chaotic. made with love 😚</p>
+
+    <!-- PHOTOS -->
+    <div class="photos">
+      <img src="photo1.jpg">
+      <img src="photo2.jpg">
+      <img src="photo3.jpg">
+    </div>
+
+    <!-- BUTTONS -->
+    <button onclick="playSong()">🎶 play this when you're ready</button>
+    <button onclick="openCard()">💌 open this</button>
+  </div>
+
+  <!-- POPUP CARD -->
+  <div class="overlay" id="overlay">
+    <div class="card">
+      <div class="close" onclick="closeCard()">✖</div>
+      <p>
+        Hey you
